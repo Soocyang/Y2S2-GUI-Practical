@@ -215,7 +215,9 @@ public class P3Q5 extends JFrame {
 //            jtfArrayForPane2[3][2].setText(String.format("%.2f",numOfDeOf10 ));
 //            jtfArrayForPane2[4][2].setText(String.format("%.2f",numOfDeOf5  ));
 //            jtfArrayForPane2[5][2].setText(String.format("%.2f",numOfDeOf1  ));
-
+            if (e.getSource() == jtfArrayForPane2[1][1]){
+                jtfArrayForPane2[1][2].setText(Integer.parseInt(jtfArrayForPane2[1][1].getText()) * 100 + "");
+            }
         }
 
     }
