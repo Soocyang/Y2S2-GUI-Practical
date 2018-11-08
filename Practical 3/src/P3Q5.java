@@ -139,22 +139,15 @@ public class P3Q5 extends JFrame {
 //
 //        JTextField denot100jtf = jtfArrayForPane2[1][1];
 //        denot100jtf.addKeyListener();
-        jtfArrayForPane2[1][1].addKeyListener(new KeyEventListener());
-        jtfArrayForPane2[2][1].addKeyListener(new KeyEventListener());
-        jtfArrayForPane2[3][1].addKeyListener(new KeyEventListener());
-        jtfArrayForPane2[4][1].addKeyListener(new KeyEventListener());
-        jtfArrayForPane2[5][1].addKeyListener(new KeyEventListener());
+        for (int i = 1; i < 6; i++) {
+            jtfArrayForPane2[i][1].addKeyListener(new KeyEventListener());
+            //Displaying Output
+            jtfArrayForPane2[i][2].addKeyListener(new KeyEventListener());
 
-        //Displaying Output
-        jtfArrayForPane2[1][2].addKeyListener(new KeyEventListener());
-        jtfArrayForPane2[2][2].addKeyListener(new KeyEventListener());
-        jtfArrayForPane2[3][2].addKeyListener(new KeyEventListener());
-        jtfArrayForPane2[4][2].addKeyListener(new KeyEventListener());
-        jtfArrayForPane2[5][2].addKeyListener(new KeyEventListener());
+        }
 
         //Displaying Total
-        jtfArrayForPane2[6][2].setText("Total Is Here");
-
+        //jtfArrayForPane2[6][2].setText("Total Is Here");
     }
 
     private static void settingPanel3() {
@@ -182,44 +175,38 @@ public class P3Q5 extends JFrame {
 //                getToolkit().beep();
                 e.consume();
             }
-            
-            
-//            numOfDeOf100 = Integer.parseInt(jtfArrayForPane2[1][1].getText());
-//            numOfDeOf50 = Integer.parseInt(jtfArrayForPane2[2][1].getText());
-//            numOfDeOf10 = Integer.parseInt(jtfArrayForPane2[3][1].getText());
-//            numOfDeOf5 = Integer.parseInt(jtfArrayForPane2[4][1].getText());
-//            numOfDeOf1 = Integer.parseInt(jtfArrayForPane2[5][1].getText());
-//
-//            System.out.println(numOfDeOf100 + "\n"
-//                    + numOfDeOf50 + "\n"
-//                    + numOfDeOf10 + "\n"
-//                    + numOfDeOf5 + "\n"
-//                    + numOfDeOf1);
 
-//            jtfArrayForPane2[1][2].setText(numOfDeOf100);
-//            jtfArrayForPane2[2][2].setText(numOfDeOf50);
-//            jtfArrayForPane2[3][2].setText(numOfDeOf10);
-//            jtfArrayForPane2[4][2].setText(numOfDeOf5);
-//            jtfArrayForPane2[5][2].setText(numOfDeOf1);
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-
+                
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-//            jtfArrayForPane2[1][2].setText(String.format("%.2f",numOfDeOf100));
-//            jtfArrayForPane2[2][2].setText(String.format("%.2f",numOfDeOf50 ));
-//            jtfArrayForPane2[3][2].setText(String.format("%.2f",numOfDeOf10 ));
-//            jtfArrayForPane2[4][2].setText(String.format("%.2f",numOfDeOf5  ));
-//            jtfArrayForPane2[5][2].setText(String.format("%.2f",numOfDeOf1  ));
-            if (e.getSource() == jtfArrayForPane2[1][1]){
-                jtfArrayForPane2[1][2].setText(Integer.parseInt(jtfArrayForPane2[1][1].getText()) * 100 + "");
-            }
-        }
 
+            if (e.getSource() == jtfArrayForPane2[1][1]) {
+                jtfArrayForPane2[1][2].setText(String.format("%.2f", Double.parseDouble(jtfArrayForPane2[1][1].getText()) * 100));
+            } else if (e.getSource() == jtfArrayForPane2[2][1]) {
+                jtfArrayForPane2[2][2].setText(String.format("%.2f", Double.parseDouble(jtfArrayForPane2[2][1].getText()) * 50));
+            } else if (e.getSource() == jtfArrayForPane2[3][1]) {
+                jtfArrayForPane2[3][2].setText(String.format("%.2f", Double.parseDouble(jtfArrayForPane2[3][1].getText()) * 10));
+            } else if (e.getSource() == jtfArrayForPane2[4][1]) {
+                jtfArrayForPane2[4][2].setText(String.format("%.2f", Double.parseDouble(jtfArrayForPane2[4][1].getText()) * 5));
+            } else if (e.getSource() == jtfArrayForPane2[5][1]) {
+                jtfArrayForPane2[5][2].setText(String.format("%.2f", Double.parseDouble(jtfArrayForPane2[5][1].getText())));
+            }
+            
+            jtfArrayForPane2[6][2].setText(String.format("%.2f", (Double.parseDouble(jtfArrayForPane2[1][1].getText()) * 100)
+                    + (Double.parseDouble(jtfArrayForPane2[2][1].getText()) * 50)
+                    + (Double.parseDouble(jtfArrayForPane2[3][1].getText()) * 10)
+                    + (Double.parseDouble(jtfArrayForPane2[4][1].getText()) * 5)
+                    + (Double.parseDouble(jtfArrayForPane2[5][1].getText()))));
+
+            
+
+        }
     }
 
     private static class BtnActionListener implements ActionListener {
