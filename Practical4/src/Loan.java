@@ -1,4 +1,10 @@
-
+/* 
+@Student Name   : Soo Cia Yang
+@Student ID     : 17WMD05652
+@Tutotial Group : GP1
+@Practical 4 Question 3
+--------------------------------------
+ */
 public class Loan {
 
     private double annualInterestRate;
@@ -11,12 +17,13 @@ public class Loan {
 
     public Loan(double annualInterestRate, int numberOfYears, double loanAmount) {
 
-        if (annualInterestRate >= 0 && numberOfYears >= 0 && loanAmount >= 0) {
+        if (annualInterestRate <= 0 || numberOfYears <= 0 || loanAmount <= 0) {
+            //throw new IllegalArgumentException("Annual Interest Rate,Number Of Years, Loan Amount cannot be less or equal to zero...");
+            
+        } else {
             this.annualInterestRate = annualInterestRate;
             this.numberOfYears = numberOfYears;
             this.loanAmount = loanAmount;
-        } else {
-            throw new IllegalArgumentException("Annual Interest Rate,Number Of Years, Loan Amount cannot be less or equal to zero...");
         }
         loanDate = new java.util.Date();
     }
@@ -26,7 +33,11 @@ public class Loan {
     }
 
     public void setAnnualInterestRate(double annualInterestRate) {
-        this.annualInterestRate = annualInterestRate;
+        if (annualInterestRate <= 0) {
+            throw new IllegalArgumentException("Annual Interest Rate cannot be less or equal to zero...");
+        } else {
+            this.annualInterestRate = annualInterestRate;
+        }
     }
 
     public int getNumberOfYears() {
@@ -34,7 +45,11 @@ public class Loan {
     }
 
     public void setNumberOfYears(int numberOfYears) {
-        this.numberOfYears = numberOfYears;
+        if (numberOfYears <= 0) {
+            throw new IllegalArgumentException("Number Of Years cannot be less or equal to zero...");
+        } else {
+            this.numberOfYears = numberOfYears;
+        }
     }
 
     public double getLoanAmount() {
@@ -42,7 +57,12 @@ public class Loan {
     }
 
     public void setLoanAmount(double loanAmount) {
-        this.loanAmount = loanAmount;
+        if (loanAmount <= 0) {
+            throw new IllegalArgumentException("Loan Amount cannot be less or equal to zero...");
+        } else {
+            this.loanAmount = loanAmount;
+
+        }
     }
 
     /**

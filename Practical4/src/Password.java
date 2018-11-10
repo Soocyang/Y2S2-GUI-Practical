@@ -1,6 +1,10 @@
-
-import java.util.*;
-import java.lang.*;
+/* 
+@Student Name   : Soo Cia Yang
+@Student ID     : 17WMD05652
+@Tutotial Group : GP1
+@Practical 4 Question 4
+--------------------------------------
+ */
 
 public class Password {
 
@@ -10,7 +14,7 @@ public class Password {
 
     }
 
-    public Password(char[] password) throws InvalidPasswordException{
+    public Password(char[] password) throws InvalidPasswordException {
 
         StringBuilder errMessage = new StringBuilder();
 
@@ -30,29 +34,27 @@ public class Password {
         //if password is null
         if (password.length == 0) {
             errMessage.append("Invalid Password: password cannot be null or an empty string.\n");
-        }else{
-        
-        //Password less than 7 characters
-        if (((i + j) < 7)) {
-            errMessage.append("Your password should have at least 7 alpha-numeric characters.\n");
+        } else {
+
+            //Password less than 7 characters
+            if (((i + j) < 7)) {
+                errMessage.append("Your password should have at least 7 alpha-numeric characters.\n");
+            }
+
+            //if password contains all digits
+            if (i == password.length) {
+                errMessage.append("Your password should have at least 1 character.\n");
+            }
+
+            //if password contains all characters
+            if (j == password.length) {
+                errMessage.append("Your password should have at least 1 digit.\n");
+            }
         }
 
-        //if password contains all digits
-        if (i == password.length) {
-            errMessage.append("Your password should have at least 1 character.\n");
+        if (!errMessage.toString().isEmpty()) {
+            throw new InvalidPasswordException(errMessage.toString());
         }
-
-        //if password contains all characters
-        if (j == password.length) {
-            errMessage.append("Your password should have at least 1 digit.\n");
-        }
-        }
-        
-
-        
-        
-        throw new InvalidPasswordException(errMessage.toString());
-        
 
     }
 

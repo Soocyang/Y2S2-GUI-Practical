@@ -1,4 +1,10 @@
-
+/* 
+@Student Name   : Soo Cia Yang
+@Student ID     : 17WMD05652
+@Tutotial Group : GP1
+@Practical 4 Question 2
+--------------------------------------
+ */
 import java.util.*;
 import java.math.*;
 import javax.swing.*;

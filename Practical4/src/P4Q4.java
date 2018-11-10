@@ -1,4 +1,10 @@
-
+/* 
+@Student Name   : Soo Cia Yang
+@Student ID     : 17WMD05652
+@Tutotial Group : GP1
+@Practical 4 Question 4
+--------------------------------------
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -55,8 +61,11 @@ public class P4Q4 extends JFrame {
                 ta.setForeground(Color.BLUE);
 
             } catch (InvalidPasswordException ex) {
+                jtfPassword.setText("");
+                jtfPassword.requestFocusInWindow();
                 ta.setForeground(Color.red);
                 ta.setText(ex.getMessage());
+                //ta.grabFocus();
             }
 
             //ta.setText(new String(jtfPassword.getPassword()));
