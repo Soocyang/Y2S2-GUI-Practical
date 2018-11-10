@@ -11,6 +11,7 @@ To test the program... The Key Binding for  :
         Divide Operation is "Alt + D"
 
  */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -38,7 +39,7 @@ public class P3Q4 extends JFrame {
         pane1.add(jtfSecondNum);
         pane1.add(new JLabel("Result"));
         pane1.add(jtfResult);
-        
+
         //Panel 2
         pane2.setLayout(new FlowLayout());
         pane2.add(jbtAdd);
@@ -49,22 +50,22 @@ public class P3Q4 extends JFrame {
         //Add Panel to Frame
         add(pane1, BorderLayout.CENTER);
         add(pane2, BorderLayout.SOUTH);
-        
+
         //Set Result Field Uneditable
         jtfResult.setEditable(false);
-                
+
         //Add listener
         jbtAdd.addActionListener(new calcBtnListener());
         jbtSubtract.addActionListener(new calcBtnListener());
         jbtMultiply.addActionListener(new calcBtnListener());
         jbtDivide.addActionListener(new calcBtnListener());
-        
+
         //Add 
         jbtAdd.setMnemonic(KeyEvent.VK_A);
         jbtSubtract.setMnemonic(KeyEvent.VK_S);
         jbtMultiply.setMnemonic(KeyEvent.VK_M);
         jbtDivide.setMnemonic(KeyEvent.VK_D);
-        
+
         //Frame Component
         setTitle("Simple Calculator");
         setSize(350, 180);
@@ -76,7 +77,9 @@ public class P3Q4 extends JFrame {
     }
 
     public static void main(String[] args) {
+
         P3Q4 p3Q4 = new P3Q4();
+
     }
 
     private class calcBtnListener implements ActionListener {
@@ -84,25 +87,32 @@ public class P3Q4 extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            double firstNum = Double.parseDouble(jtfFirstNum.getText());
-            double secondNum = Double.parseDouble(jtfSecondNum.getText());
+            try {
+                double firstNum = Double.parseDouble(jtfFirstNum.getText());
+                double secondNum = Double.parseDouble(jtfSecondNum.getText());
 
-            if (e.getSource() == jbtAdd) {
-                double addAns = firstNum + secondNum;
-                jtfResult.setText(String.format("%.2f", addAns));
+                if (e.getSource() == jbtAdd) {
+                    double addAns = firstNum + secondNum;
+                    jtfResult.setText(String.format("%.2f", addAns));
 
-            } else if (e.getSource() == jbtSubtract) {
-                double subAns = firstNum - secondNum;
-                jtfResult.setText(String.format("%.2f", subAns));
+                } else if (e.getSource() == jbtSubtract) {
+                    double subAns = firstNum - secondNum;
+                    jtfResult.setText(String.format("%.2f", subAns));
 
-            } else if (e.getSource() == jbtMultiply) {
-                double mulAns = firstNum * secondNum;
-                jtfResult.setText(String.format("%.2f", mulAns));
+                } else if (e.getSource() == jbtMultiply) {
+                    double mulAns = firstNum * secondNum;
+                    jtfResult.setText(String.format("%.2f", mulAns));
 
-            } else if (e.getSource() == jbtDivide) {
-                double divAns = firstNum / secondNum;
-                jtfResult.setText(String.format("%.2f", divAns));
+                } else if (e.getSource() == jbtDivide) {
+                    double divAns = firstNum / secondNum;
+                    jtfResult.setText(String.format("%.2f", divAns));
 
+                }
+            } catch (NumberFormatException ex) {
+                   JOptionPane.showMessageDialog(null, "Incorrect input: integer or float number required", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+                   jtfFirstNum.setText("");
+                   jtfSecondNum.setText("");
+                   jtfFirstNum.requestFocusInWindow();
             }
 
         }
