@@ -39,6 +39,7 @@ public class MaintainProgrammeFrame extends JFrame {
         jbtRetrieve.addActionListener(new RetrieveListener());
         jbtAdd.addActionListener(new AddListener());
         jbtUpdate.addActionListener(new UpdateListener());
+        jbtDelete.addActionListener(new DeleteListener());
 
     }
 
@@ -53,6 +54,8 @@ public class MaintainProgrammeFrame extends JFrame {
                 jtfFaculty.setText(programme.getFaculty());
             } else {
                 JOptionPane.showMessageDialog(null, "No such programme code.", "RECORD NOT FOUND", JOptionPane.ERROR_MESSAGE);
+                clearTextField();
+                jtfCode.requestFocusInWindow();
             }
         }
     }
@@ -64,13 +67,19 @@ public class MaintainProgrammeFrame extends JFrame {
             String code = jtfCode.getText();
             String name = jtfName.getText();
             String faculty = jtfFaculty.getText();
-            Programme programme = new Programme(code, name, faculty);
+            Programme programme = progControl.selectRecord(code);
 
-            if (progControl.selectRecord(code) != null) {
+            if (programme != null) {
                 JOptionPane.showMessageDialog(null, "Code already exist", "DUPLICATED CODE", JOptionPane.ERROR_MESSAGE);
-
+                
+                clearTextField();
+                jtfCode.requestFocusInWindow();
             } else {
+                programme = new Programme(code, name, faculty);
                 progControl.addRecord(programme);
+                
+                clearTextField();
+                jtfCode.requestFocusInWindow();
             }
         }
     }
@@ -82,15 +91,49 @@ public class MaintainProgrammeFrame extends JFrame {
             String code = jtfCode.getText();
             String name = jtfName.getText();
             String faculty = jtfFaculty.getText();
-            Programme programme = new Programme(code, name, faculty);
+            Programme programme = progControl.selectRecord(code);
 
-            if (progControl.selectRecord(code) == null) {
+            if (programme == null) {
                 JOptionPane.showMessageDialog(null, "No such programme code.", "RECORD NOT FOUND", JOptionPane.ERROR_MESSAGE);
-
+                
+                clearTextField();
+                jtfCode.requestFocusInWindow();
             } else {
+                programme = new Programme(code, name, faculty);
                 progControl.updateRecord(programme);
+                
+                clearTextField();
+                jtfCode.requestFocusInWindow();
             }
         }
+    }
+
+    private class DeleteListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String code = jtfCode.getText();
+            Programme programme = progControl.selectRecord(code);
+            if (programme == null) {
+                JOptionPane.showMessageDialog(null, "No such programme code.", "RECORD NOT FOUND", JOptionPane.ERROR_MESSAGE);
+                clearTextField();
+                jtfCode.requestFocusInWindow();
+            } else {
+                int delRec = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this record.");
+                if(delRec==JOptionPane.YES_OPTION)
+                progControl.deleteRecord(programme);
+                
+                clearTextField();
+                jtfCode.requestFocusInWindow();
+            }
+        }
+    }
+    
+    public void clearTextField(){
+        jtfCode.setText("");
+        jtfName.setText("");
+        jtfFaculty.setText("");
+        
     }
 
     public static void main(String[] args) {

@@ -104,6 +104,7 @@ public class SimpleCRUD extends JFrame {
                     stmt.executeUpdate();
 
                     JOptionPane.showMessageDialog(null, "Programme successful created.");
+                    clearJTF();
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -129,6 +130,7 @@ public class SimpleCRUD extends JFrame {
                     stmt.executeUpdate();
                     
                     JOptionPane.showMessageDialog(null, "Programme " + jtfCode.getText() + " has been updated.");
+                    clearJTF();
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No such programme code.", "RECORD NOT FOUND", JOptionPane.ERROR_MESSAGE);
@@ -187,6 +189,12 @@ public class SimpleCRUD extends JFrame {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+    
+    private void clearJTF(){
+        jtfCode.setText("");
+        jtfName.setText("");
+        jtfFaculty.setText("");
     }
 
     public static void main(String[] args) {

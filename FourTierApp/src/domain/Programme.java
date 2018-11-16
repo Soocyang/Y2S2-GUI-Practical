@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Programme implements Serializable {
-    private String code;
+    public String code;
     private String name;
     private String faculty;
 

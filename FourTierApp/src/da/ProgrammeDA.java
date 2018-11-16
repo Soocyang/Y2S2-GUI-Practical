@@ -56,16 +56,35 @@ public class ProgrammeDA {
     }
 
     public void updateRecord(Programme progm) {
-        Programme programme = progm;
-        String queryStr = "UPDATE " + tableName + " SET Name = ?, Faculty = ? WHERE Code = ?";
+
+        String updateStr = "UPDATE " + tableName + " SET Name = ?, Faculty = ? WHERE Code = ?";
 
         try {
-            stmt = conn.prepareStatement(queryStr);
-            stmt.setString(1, programme.getCode());
-            stmt.setString(2, programme.getName());
-            stmt.setString(3, programme.getFaculty());
+
+            stmt = conn.prepareStatement(updateStr);
+            stmt.setString(1, progm.getName());
+            stmt.setString(2, progm.getFaculty());
+            stmt.setString(3, progm.getCode());
             stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Programme " + programme.getCode() + " has been updated.");
+
+            JOptionPane.showMessageDialog(null, "Programme " + progm.getCode() + " has been updated.");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+    }
+
+    public void deleteRecord(Programme progm) {
+
+        String delStr = "DELETE FROM " + tableName + " WHERE Code = ?";
+        try {
+            stmt = conn.prepareStatement(delStr);
+            stmt.setString(1, progm.getCode());
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "The programme \"" + progm.getName() + "\" has been deleted.", null, JOptionPane.INFORMATION_MESSAGE);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -95,7 +114,7 @@ public class ProgrammeDA {
 
     public static void main(String[] args) {
         ProgrammeDA da = new ProgrammeDA();
-        Programme programme = da.getRecord("IC");
+        Programme programme = da.getRecord("IA");
         System.out.println(programme);
     }
 

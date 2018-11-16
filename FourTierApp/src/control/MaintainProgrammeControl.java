@@ -24,4 +24,10 @@ public class MaintainProgrammeControl {
 
     }
 
+    public void deleteRecord(Programme progm) {
+        progDA.deleteRecord(progm);
+    }
+
+    
+
 }
