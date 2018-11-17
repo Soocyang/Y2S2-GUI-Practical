@@ -71,13 +71,13 @@ public class MaintainProgrammeFrame extends JFrame {
 
             if (programme != null) {
                 JOptionPane.showMessageDialog(null, "Code already exist", "DUPLICATED CODE", JOptionPane.ERROR_MESSAGE);
-                
+
                 clearTextField();
                 jtfCode.requestFocusInWindow();
             } else {
                 programme = new Programme(code, name, faculty);
                 progControl.addRecord(programme);
-                
+
                 clearTextField();
                 jtfCode.requestFocusInWindow();
             }
@@ -95,13 +95,13 @@ public class MaintainProgrammeFrame extends JFrame {
 
             if (programme == null) {
                 JOptionPane.showMessageDialog(null, "No such programme code.", "RECORD NOT FOUND", JOptionPane.ERROR_MESSAGE);
-                
+
                 clearTextField();
                 jtfCode.requestFocusInWindow();
             } else {
                 programme = new Programme(code, name, faculty);
                 progControl.updateRecord(programme);
-                
+
                 clearTextField();
                 jtfCode.requestFocusInWindow();
             }
@@ -119,21 +119,22 @@ public class MaintainProgrammeFrame extends JFrame {
                 clearTextField();
                 jtfCode.requestFocusInWindow();
             } else {
-                int delRec = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this record.");
-                if(delRec==JOptionPane.YES_OPTION)
-                progControl.deleteRecord(programme);
-                
-                clearTextField();
-                jtfCode.requestFocusInWindow();
+                int delRec = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record.");
+                if (delRec == JOptionPane.YES_OPTION) {
+                    progControl.deleteRecord(programme);
+                    clearTextField();
+                    jtfCode.requestFocusInWindow();
+                }
+
             }
         }
     }
-    
-    public void clearTextField(){
+
+    public void clearTextField() {
         jtfCode.setText("");
         jtfName.setText("");
         jtfFaculty.setText("");
-        
+
     }
 
     public static void main(String[] args) {
