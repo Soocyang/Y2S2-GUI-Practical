@@ -1,4 +1,10 @@
-
+/* 
+*Student Name   : Soo Cia Yang
+*Student ID     : 17WMD05652
+*Tutotial Group : GP1
+*Practical 6 Question 1
+*--------------------------------------
+*/
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
