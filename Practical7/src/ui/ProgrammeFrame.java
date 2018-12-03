@@ -2,7 +2,7 @@
 *Student Name   : Soo Cia Yang
 *Student ID     : 17WMD05652
 *Tutotial Group : GP1
-*Practical 6 Question 2
+*Practical 7 Question 2
 *--------------------------------------
 */
 
@@ -15,12 +15,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
- *
- *
- *
- *
- */
 public class ProgrammeFrame extends JFrame {
 
     private DefaultComboBoxModel cboxModel = new DefaultComboBoxModel();
