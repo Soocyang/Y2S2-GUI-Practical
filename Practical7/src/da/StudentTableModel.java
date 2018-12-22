@@ -103,27 +103,9 @@ public class StudentTableModel extends AbstractTableModel {
         }
     }
 
-    public void setQueryProgmCode(String code) {
-        try {
-            rs = stmt.executeQuery(query + " WHERE ProgrammeCode = \'" + code + "\'");
-            metaData = rs.getMetaData();
 
-            rs.last();
-            numberOfRows = rs.getRow();
 
-            fireTableStructureChanged();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
 
-    public void getRecord(String code) {
-        if (code == "") {
-            setQuery(query);
-        } else {
-            setQueryProgmCode(code);
-        }
-    }
 
     public static void main(String[] args) {
         StudentTableModel tableModel = new StudentTableModel("IA");

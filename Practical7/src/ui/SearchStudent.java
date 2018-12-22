@@ -4,8 +4,7 @@
 *Tutotial Group : GP1
 *Practical 7 Question 3
 *--------------------------------------
-*/
-
+ */
 package ui;
 
 import da.StudentTableModel;
@@ -28,7 +27,7 @@ public class SearchStudent extends JFrame {
 
         tableModel = new StudentTableModel();
         studentTable = new JTable(tableModel);
-        sorter = new TableRowSorter<TableModel>(tableModel);
+        sorter = new TableRowSorter<>(tableModel);
         studentTable.setRowSorter(sorter);
         add(new JScrollPane(studentTable));
 
@@ -43,9 +42,12 @@ public class SearchStudent extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() != "") {
+            if (jtfCode.getText().length() == 0) {
+                sorter.setRowFilter(null);
+
+            } else {
                 String code = jtfCode.getText();
-                tableModel.getRecord(code);
+                sorter.setRowFilter(RowFilter.regexFilter(code));
             }
 
         }
