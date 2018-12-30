@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Add New Student</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h1>New Student Details</h1>
+            <form method="get" action="p8q4Servlet">
+                <label for="id">Student ID</label>
+                <input type="text" name="id" required>
+                <br>
+                <p>
+                    <label for="ic">IC Number</label>
+                    <input type="text" name="ic" required>
+                </p>
+                <p>
+                    <label for="uname">Name</label>
+                    <input type="text" name="uname" required>
+                </p>
+                <p>
+                    <label for="lv">Level</label>
+                    <input type="radio" name="level" value="F"> Foundation
+                    <input type="radio" name="level" value="D"> Diploma
+                    <input type="radio" name="level" value="B"> Bachelor
+                </p>
+                <p>
+                    <label for="prog">Programme</label>
+                    <select id="prog" name="prog">
+                        <option value="IA">Information System Engineering</option>
+                        <option value="IB">Business Information System</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="yr">Year of Study</label>
+                    <input type="number" name="yr" min="1" max="5">
+                </p>
+            <p>
+                <input type="submit" name="Submit" value="Submit">
+                <input type="reset" value="Reset">
+            </p>
+            </form>
+        </div>
+    </body>
+</html>

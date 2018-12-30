@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Add New Student</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>New Student Details</h3>
+        <form method="post" action="SimpleAddStudent">
+            <p>
+                <label>Student ID</label>
+                <input type="text" name="id" size="10">
+            </p>
+            <p>
+                <label>IC Number</label>
+                <input type="text" name="ic" size="12">
+            </p>
+            <p>
+                <label>Name</label>
+                <input type="text" name="name" size="50">
+            </p>
+            <p>
+                <label>Level</label>
+                <input type="radio" name="level" value="F" checked="" />Foundation
+                <input type="radio" name="level" value="D" checked="" />Diploma
+                <input type="radio" name="level" value="B" checked="" />Bachelor
+            </p>
+            <p>
+                <label>Programme</label>
+                <select name="programme">
+                    <option value="IA">Information System Engineering</option>
+                    <option value="IB">Business Information Technology</option>
+                </select>
+            </p>
+            <p>
+                <label>Year of Study</label>
+                <input type="number" name="yearStudy" min="1" max="6"/>
+            </p>
+            <p>
+                <input type="submit" name="Submit" value="Submit">
+                <input type="reset" value="Reset">
+            </p>
+            
+            
+        </form>
+    </body>
+</html>
